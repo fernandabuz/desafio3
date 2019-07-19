@@ -174,7 +174,7 @@ let infoEstado = [ //array com as informações dos estados
         nome: 'Sergipe',
         capital: 'Aracaju',
         regiao: 'Nordeste',
-        bandeira: './imagens/bandeiraSEpng'
+        bandeira: './imagens/bandeiraSE.png'
     },{
         id: 26,
         sigla: 'TO',
@@ -205,7 +205,7 @@ let respostaSucesso = estado => { //resposta que aparecerá para o usuário se e
                 <h5 class="resultado_estado">${estado.capital}</h5>
             </div>
             <div class="col-auto">
-                <p class="label_estado">Regiao</p>
+                <p class="label_estado">Região</p>
                 <h5 class="resultado_estado">${estado.regiao}</h5>
             </div>
         </div>
@@ -215,7 +215,7 @@ let respostaSucesso = estado => { //resposta que aparecerá para o usuário se e
 
 let respostaErro = palavraBuscada => { //resposta que aparecerá para o usuário em casa de busca inválida
     return `
-        <p class="resultado_erro"> <span class="erro">:(</span> Sinto muito, não encontramos nenhum estado com o nome ${palavraBuscada}! Por favor, tente novamente. </p>
+        <p class="resultado_erro"> :( Sinto muito, não encontramos nenhum estado com o nome <span style="color:#FF6666">${palavraBuscada}</span>!</p>
     `
 }
 
@@ -240,26 +240,25 @@ function removerAcentos(novaStringComAcento) { //função que remove os acentos 
 
 const tratamentoDados = str => removerAcentos(str).toUpperCase(); //aplica o remover acentos e coloca todas as letras em maiúsculo
 
-const encontrarEstado = (input) => infoEstado.find(elem => tratamentoDados(elem.nome) == tratamentoDados(input)); //pega o que o usuário digitou, aplica o tratamento de dados e compara para encontrar o estado
+const encontrarEstado = (input) => infoEstado.find(elem => tratamentoDados(elem.nome) == tratamentoDados(input)); //aplica o tratamento de dados no input do usuário e compara para encontrar o estado
 
 function inserirBandeira(bandeira) { //função para inserir a bandeira no background
-
+    document.getElementById("pagina").style.backgroundImage = 'url('+ bandeira +')';
 }
 
 function retirarBandeira () { //função para remover a bandeira do background
-    
+    document.getElementById("pagina").style.backgroundImage = null;
 }
 
-function buscaCliqueBotao () { //buscar o dado no input e envia a resposta para o HTML 
+function buscaCliqueBotao () { //buscar o dado no input e enviar a resposta
     let inputUsuario = document.getElementById('estado_usuario').value,
         divResposta = document.getElementById('resposta'),
         resultado = encontrarEstado(inputUsuario)
-    console.log(resultado);
-    if (!!resultado) {//se resultado do if = 'algumas', tiver dado => true
+    if (!!resultado) {
         divResposta.innerHTML = respostaSucesso(resultado)
         inserirBandeira(resultado.bandeira)
-    } else { //se resultado = undefined,  n tiver dado => false
-        divResposta.innerHTML = respostaErro(inputUsuario)
-        retirarBandeira()
+   } else { 
+       divResposta.innerHTML = respostaErro(inputUsuario)
+       retirarBandeira()
     }
 }  

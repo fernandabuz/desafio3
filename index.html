@@ -8,21 +8,27 @@
     <title>Desafio 3 - Fernanda Buzzarello</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body id="pagina">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-10 col-md-8">
-                <div id="formulario" style="background: gray">
+                <div id="formulario">
                     <h1>Quer saber as principais informações sobre um estado do Brasil?</h1>
                     <div class="campo_busca">
-                        <input id="estado_usuario" class="form-control" type="text" name="estado"
-                            placeholder="Insira o estado aqui" />
-
-                        <button id="botao_buscar" type="button" class="btn btn-info"
-                            onclick="buscaCliqueBotao()">Buscar</button>
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <input id="estado_usuario" class="form-control" type="text" name="estado"
+                                    placeholder="Insira o estado aqui" />
+                            </div>
+                            <div class="col-auto">
+                                <button id="botao_buscar" type="button" class="btn btn-info"
+                                    onclick="buscaCliqueBotao()">Buscar</button>
+                            </div>
+                        </div>
                     </div>
                     <div id="resposta">
                     </div>
@@ -31,11 +37,6 @@
         </div>
     </div>
     <script src="./script.js"></script>
-    <footer>
-        <h4> Written and coded by <a href="https://www.linkedin.com/in/fernanda-buzzarello-447396104/"
-                target="_blank">Fernanda Buzzarello</a>.</h4>
-    </footer>
+    
 </body>
-</footer>
-
 </html>
